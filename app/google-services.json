@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "178903215681",
+    "project_id": "onecampus-dcf16",
+    "storage_bucket": "onecampus-dcf16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178903215681:android:f213847eb452bc586960c0",
+        "android_client_info": {
+          "package_name": "com.example.onecampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178903215681-4fkj2fi4c6nl4dpmrstb125nqdmict68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPEj0a3xnc5ROsEPaZFyqTnticj-9zHmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178903215681-4fkj2fi4c6nl4dpmrstb125nqdmict68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

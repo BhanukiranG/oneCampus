@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mobilelogin"
+    android:filterTouchesWhenObscured="true"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:forceHasOverlappingRendering="true"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/signIn"
+        android:layout_width="211dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="381dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/login" />
+
+    <ImageButton
+        android:id="@+id/signup"
+        android:layout_width="196dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signIn"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+</androidx.constraintlayout.widget.ConstraintLayout>
