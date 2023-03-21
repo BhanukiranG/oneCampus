@@ -6,31 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".userMain">
 
-    <TextView
-        android:id="@+id/textView3"
+    <Button
+        android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginBottom="40dp"
-        android:text="model"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="1dp"
+        android:text="upload"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="298dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="49dp"
-        android:text="TextView"
-        android:textSize="20sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
-
+        app:layout_constraintTop_toBottomOf="@+id/upload" />
 </androidx.constraintlayout.widget.ConstraintLayout>

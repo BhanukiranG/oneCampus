@@ -58,8 +58,6 @@ public class userRegister extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(userRegister.this, "User Added", Toast.LENGTH_SHORT).show();
-//                                    Intent intent = new Intent(userRegister.this, userMain.class);
-//                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(userRegister.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

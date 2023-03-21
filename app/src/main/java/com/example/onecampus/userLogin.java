@@ -22,18 +22,6 @@ public class userLogin extends AppCompatActivity {
     EditText editTextEmail,editTextPassword;
     Button userSigin;
     FirebaseAuth mAuth;
-//    ProgressBar progressBar;
-//@Override
-//public void onStart() {
-//    super.onStart();
-//    // Check if user is signed in (non-null) and update UI accordingly.
-//    FirebaseUser currentUser = mAuth.getCurrentUser();
-//    if(currentUser != null){
-//        Intent intent = new Intent(userLogin.this, userMain.class);
-//        startActivity(intent);
-//        finish();
-//    }
-//}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
