@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".postActivity">
+    tools:context=".eventsUpload">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="Upload Post"
             android:textStyle="bold"
             android:textSize="36dp"
-            android:textColor="@android:color/holo_orange_light"
+            android:textColor="#000000"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
@@ -28,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="College Name"
-            android:id="@+id/clg"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -39,13 +38,13 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/clg"
                 android:layout_marginTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:id="@+id/title"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -56,6 +55,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/title"
                 android:layout_marginTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
-            android:id="@+id/description"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -74,6 +73,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/description"
                 android:layout_marginTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,12 +101,10 @@
                 android:layout_height="200dp"
                 android:id="@+id/productImage"/>
         </RelativeLayout>
-
         <TextView
-            android:id="@+id/textView1"
-            android:text="Link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Link"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -117,9 +115,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/Link"
                 android:layout_marginTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:id="@+id/submit"
             android:layout_width="362dp"

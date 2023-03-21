@@ -1,9 +1,11 @@
 package com.example.onecampus;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -23,16 +31,29 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 public class eventsUpload extends AppCompatActivity {
 
-    TextView description,title,clg;
+    TextView description,title,clg,link;
     ImageView uploadbtn,productImage;
     RelativeLayout relative;
     Button submit;
     Uri imageuri;
-
+    private FirebaseDatabase database;
+    private FirebaseStorage firebaseStorage;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_upload);
+
+        database=FirebaseDatabase.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
+
+        dialog=new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Please Wait...");
+        dialog.setCancelable(false);
+        dialog.setTitle("Event Uploading");
+        dialog.setCanceledOnTouchOutside(false);
+
         description=findViewById(R.id.description);
         title=findViewById(R.id.title);
         clg=findViewById(R.id.clg);
@@ -40,13 +61,54 @@ public class eventsUpload extends AppCompatActivity {
         relative=findViewById(R.id.relative);
         submit=findViewById(R.id.submit);
         productImage=findViewById(R.id.productImage);
-
+        link=findViewById(R.id.Link);
         uploadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadImage();
                 relative.setVisibility(View.VISIBLE);
                 uploadbtn.setVisibility(View.GONE);
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.show();
+
+                final StorageReference reference=firebaseStorage.getReference().child("event")
+                        .child(System.currentTimeMillis()+"");
+                reference.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                projectModel model=new projectModel();
+                                model.setProductImage(uri.toString());
+                                model.setClg(clg.getText().toString());
+                                model.setDescription(description.getText().toString());
+                                model.setTitle(title.getText().toString());
+                                model.setLink(link.getText().toString());
+
+                                database.getReference().child("event").push().setValue(model)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                dialog.dismiss();
+                                                Toast.makeText(eventsUpload.this, "Event Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                dialog.dismiss();
+                                                Toast.makeText(eventsUpload.this, "Error Ocurred", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        });
+                    }
+                });
             }
         });
     }
