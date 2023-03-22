@@ -97,6 +97,7 @@ public class eventsUpload extends AppCompatActivity {
                                             public void onSuccess(Void unused) {
                                                 dialog.dismiss();
                                                 Toast.makeText(eventsUpload.this, "Event Uploaded Successfully", Toast.LENGTH_SHORT).show();
+
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

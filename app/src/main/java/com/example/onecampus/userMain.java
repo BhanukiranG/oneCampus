@@ -46,7 +46,7 @@ public class userMain extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     projectModel model= dataSnapshot.getValue(projectModel.class);
-                    recyleList.add(model);
+                    recyleList.add(0,model);
                 }
                 recyclerAdapter.notifyDataSetChanged();
             }

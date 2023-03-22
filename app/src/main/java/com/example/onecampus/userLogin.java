@@ -49,10 +49,11 @@ public class userLogin extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(userLogin.this, "Logedin successfully", Toast.LENGTH_SHORT).show();
+                                    //FirebaseUser user=mAuth.getCurrentUser();
+                                    Toast.makeText(userLogin.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(userLogin.this, userMain.class);
                                     startActivity(intent);
-//                                    finish();
+//                                    //finish();
                                 } else {
                                     Toast.makeText(userLogin.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
