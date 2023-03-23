@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,16 +21,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class userMain extends AppCompatActivity {
-    Button upload;
+    Button upload,signout1;
     RecyclerView recyclerView;
     ArrayList<projectModel> recyleList;
-
     FirebaseDatabase firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
         upload=findViewById(R.id.upload);
+        signout1=findViewById(R.id.signout1);
+        signout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences=getSharedPreferences(userLogin.PREFS_NAME,0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putBoolean("hasLoggedin",false);
+                editor.commit();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent=new Intent(userMain.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
         recyclerView=findViewById(R.id.recyclerView);
         recyleList=new ArrayList<>();
         firebaseDatabase=FirebaseDatabase.getInstance();
@@ -67,4 +82,4 @@ public class userMain extends AppCompatActivity {
             }
         });
 
-}}
+    }}

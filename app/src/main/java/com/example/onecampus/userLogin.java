@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,10 +17,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthSettings;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class userLogin extends AppCompatActivity {
     EditText editTextEmail,editTextPassword;
+    public  static  String PREFS_NAME="MyPrefsFile";
     Button userSigin;
     FirebaseAuth mAuth;
     @Override
@@ -33,6 +37,12 @@ public class userLogin extends AppCompatActivity {
         userSigin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences=getSharedPreferences(userLogin.PREFS_NAME,0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putBoolean("hasLoggedin",true);
+                editor.commit();
+                startActivity(new Intent(userLogin.this,userMain.class));
+
                 String email,password;
                 email=String.valueOf(editTextEmail.getText());
                 password=String.valueOf(editTextPassword.getText());
@@ -49,6 +59,7 @@ public class userLogin extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+//                                    FirebaseUser user = mAuth.getCurrentUser(); //justnow added
                                     Toast.makeText(userLogin.this, "Logedin successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(userLogin.this, userMain.class);
                                     startActivity(intent);
@@ -59,7 +70,9 @@ public class userLogin extends AppCompatActivity {
                                 }
                             }
                         });
+
             }
         });
+
     }
 }
