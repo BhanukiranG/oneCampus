@@ -11,13 +11,21 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class user1 extends AppCompatActivity {
-
+    Button userEventsid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_1);
         Button logout=(Button) findViewById(R.id.logout);
+        userEventsid=findViewById(R.id.userEventsid);
+        userEventsid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(user1.this,userEvents.class);
+                startActivity(intent);
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

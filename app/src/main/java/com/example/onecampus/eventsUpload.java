@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -38,6 +40,7 @@ public class eventsUpload extends AppCompatActivity {
     Button submit;
     Uri imageuri;
     private FirebaseDatabase database;
+    private FirebaseUser user;
     private FirebaseStorage firebaseStorage;
     ProgressDialog dialog;
     @Override
@@ -47,7 +50,7 @@ public class eventsUpload extends AppCompatActivity {
 
         database=FirebaseDatabase.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
-
+        user= FirebaseAuth.getInstance().getCurrentUser();
         dialog=new ProgressDialog(this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage("Please Wait...");
@@ -76,7 +79,45 @@ public class eventsUpload extends AppCompatActivity {
             public void onClick(View v) {
 
                 dialog.show();
+                //for only emailed users
+                String getmil=user.getUid().toString();
+                final StorageReference reference1=firebaseStorage.getReference().child(getmil+"")
+                        .child(System.currentTimeMillis()+"");
+                reference1.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        reference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                projectModel model=new projectModel();
+                                model.setProductImage(uri.toString());
+                                model.setClg(clg.getText().toString());
+                                model.setDescription(description.getText().toString());
+                                model.setTitle(title.getText().toString());
+                                model.setLink(link.getText().toString());
 
+                                database.getReference().child(getmil+"").push().setValue(model)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                dialog.dismiss();
+//                                                Toast.makeText(eventsUpload.this, "Event Uploaded Successfully", Toast.LENGTH_SHORT).show();
+//                                                Intent i=new Intent(eventsUpload.this,userMain.class);
+//                                                startActivity(i);
+
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                dialog.dismiss();
+//                                                Toast.makeText(eventsUpload.this, "Error Ocurred", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        });
+                    }
+                });
+                //for all events
                 final StorageReference reference=firebaseStorage.getReference().child("event")
                         .child(System.currentTimeMillis()+"");
                 reference.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
