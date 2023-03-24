@@ -3,6 +3,7 @@ package com.example.onecampus;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,5 +28,6 @@ public class eventDetails extends AppCompatActivity {
         singleCollege.setText(getIntent().getStringExtra("singleCollege"));
         singleDiscription.setText(getIntent().getStringExtra("singleDiscription"));
         singleLink.setText(getIntent().getStringExtra("singleLink"));
+        Linkify.addLinks(singleLink,Linkify.ALL);
     }
 }
