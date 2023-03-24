@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 
 public class eventDetails extends AppCompatActivity {
         TextView singleLink,singleDiscription,singleCollege,singleEventName;
+
         ImageView singleImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
