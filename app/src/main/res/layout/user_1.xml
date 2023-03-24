@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Uploaded Events"
-        android:id="@+id/event1"/>
+        android:id="@+id/userEventsid"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

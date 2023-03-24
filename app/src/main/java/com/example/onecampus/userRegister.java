@@ -35,9 +35,9 @@ public class userRegister extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         editTextEmail=findViewById(R.id.userRegisterEmail);
         editTextPassword=findViewById(R.id.userRegisterPassword);
-        editTextCollege=findViewById(R.id.userCollegeNameRegister);
+//        editTextCollege=findViewById(R.id.userCollegeNameRegister);
         signup=findViewById(R.id.usersignup);
-        sigin=findViewById(R.id.userRegisterSignin);
+//        sigin=findViewById(R.id.userRegisterSignin);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +58,8 @@ public class userRegister extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(userRegister.this, "User Added", Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent(userRegister.this,userLogin.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(userRegister.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
@@ -66,12 +68,6 @@ public class userRegister extends AppCompatActivity {
                         });
             }
         });
-        sigin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(userRegister.this,userLogin.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }
