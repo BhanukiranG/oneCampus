@@ -55,7 +55,7 @@ public class userLogin extends AppCompatActivity {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putBoolean("hasLoggedin",true);
                 editor.commit();
-                startActivity(new Intent(userLogin.this,userMain.class));
+//                startActivity(new Intent(userLogin.this,userMain.class));
 
                 String email,password;
                 email=String.valueOf(editTextEmail.getText());
@@ -68,6 +68,7 @@ public class userLogin extends AppCompatActivity {
                     Toast.makeText(userLogin.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -77,7 +78,7 @@ public class userLogin extends AppCompatActivity {
                                     Toast.makeText(userLogin.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(userLogin.this, userMain.class);
                                     startActivity(intent);
-//                                    //finish();
+//                                    finish();
                                 } else {
                                     Toast.makeText(userLogin.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

@@ -27,8 +27,11 @@ public class user1 extends AppCompatActivity {
                 editor.commit();
                 FirebaseAuth.getInstance().signOut();
                 Intent intent=new Intent(user1.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-
+                finish();
             }
         });
     }
