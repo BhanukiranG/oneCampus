@@ -2,12 +2,16 @@ package com.example.onecampus;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,11 +28,36 @@ public class userMain extends AppCompatActivity {
     ArrayList<projectModel> recyleList;
 
     FirebaseDatabase firebaseDatabase;
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.uploads){
+            Intent i=new Intent(userMain.this,eventsUpload.class);
+            startActivity(i);
+        }
+        if(id==R.id.item2){
+            Intent i=new Intent(userMain.this,user1.class);
+            startActivity(i);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navi,menu);
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
-        upload=findViewById(R.id.upload);
+
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         recyclerView=findViewById(R.id.recyclerView);
         recyleList=new ArrayList<>();
         firebaseDatabase=FirebaseDatabase.getInstance();
@@ -46,7 +75,7 @@ public class userMain extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     projectModel model= dataSnapshot.getValue(projectModel.class);
-                    recyleList.add(model);
+                    recyleList.add(0,model);
                 }
                 recyclerAdapter.notifyDataSetChanged();
             }
@@ -59,12 +88,5 @@ public class userMain extends AppCompatActivity {
 
 
 
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(userMain.this, eventsUpload.class);
-                startActivity(intent);
-            }
-        });
 
 }}
