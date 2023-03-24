@@ -28,6 +28,6 @@ public class eventDetails extends AppCompatActivity {
         singleCollege.setText(getIntent().getStringExtra("singleCollege"));
         singleDiscription.setText(getIntent().getStringExtra("singleDiscription"));
         singleLink.setText(getIntent().getStringExtra("singleLink"));
-        Linkify.addLinks(singleLink, Linkify.ALL);
+        Linkify.addLinks(singleLink,Linkify.ALL);
     }
 }
