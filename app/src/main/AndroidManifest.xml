@@ -16,12 +16,18 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".user1"
+            android:exported="false"
+            android:parentActivityName=".userMain"/>
+        <activity
             android:name=".eventDetails"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".userMain"/>
         <activity
             android:name=".eventsUpload"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+            android:parentActivityName=".userMain"
+            android:theme="@style/Theme.Material3.Light" />
         <activity
             android:name=".userMain"
             android:exported="false"

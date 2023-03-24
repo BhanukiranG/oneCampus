@@ -11,7 +11,7 @@
         android:layout_width="106dp"
         android:layout_height="0dp"
         android:layout_marginTop="147dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="21dp"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/userEmailLogin"
@@ -41,14 +41,40 @@
         app:layout_constraintStart_toStartOf="@+id/userEmailLogin"
         app:layout_constraintTop_toBottomOf="@+id/userEmailLogin" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/forgetpass"
+        android:text="Forgot Password?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSignin"
+        app:layout_constraintVertical_bias="0.174" />
+
     <Button
         android:id="@+id/userSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
+        android:layout_marginEnd="68dp"
         android:layout_marginBottom="330dp"
-        android:text="signin"
+        android:text="SignIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/userPasswordLogin"
         app:layout_constraintTop_toBottomOf="@+id/userPasswordLogin" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/forgetpass"
+        android:text="Forgot Password?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSignin"
+        app:layout_constraintVertical_bias="0.174" />
 </androidx.constraintlayout.widget.ConstraintLayout>
