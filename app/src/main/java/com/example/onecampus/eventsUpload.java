@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.LinkAddress;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +62,7 @@ public class eventsUpload extends AppCompatActivity {
         relative=findViewById(R.id.relative);
         submit=findViewById(R.id.submit);
         productImage=findViewById(R.id.productImage);
-        link=findViewById(R.id.Link);
+        link= findViewById(R.id.Link);
         uploadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +98,9 @@ public class eventsUpload extends AppCompatActivity {
                                             public void onSuccess(Void unused) {
                                                 dialog.dismiss();
                                                 Toast.makeText(eventsUpload.this, "Event Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                                                Intent i=new Intent(eventsUpload.this,userMain.class);
+                                                startActivity(i);
+
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

@@ -123,7 +123,7 @@
             android:layout_width="362dp"
             android:layout_height="67dp"
             android:layout_margin="10dp"
-            android:text="submit" />
+            android:text="submit"/>
     </LinearLayout>
 
 </ScrollView>
