@@ -1,68 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_1"
+    android:gravity="center"
     tools:context=".userLogin">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="106dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="147dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/averia_gruesa_libre"
         android:text="Login"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/userEmailLogin"
         app:layout_constraintEnd_toEndOf="@+id/userEmailLogin"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/userEmailLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginBottom="19dp"
         android:ems="10"
+        android:hint="Email"
+        android:background="@drawable/back"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/userPasswordLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/userPasswordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/userSignin"
-        app:layout_constraintStart_toStartOf="@+id/userEmailLogin"
-        app:layout_constraintTop_toBottomOf="@+id/userEmailLogin" />
-
-
+        android:hint="Password"
+        android:background="@drawable/back"
+        android:padding="10dp"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/userSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="330dp"
-        android:text="SignIn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/userPasswordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordLogin" />
+        android:layout_marginTop="25dp"
+        android:text="SignIn" />
+
     <TextView
+        android:id="@+id/forgetpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/forgetpass"
-        android:text="Forgot Password?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userSignin"
-        app:layout_constraintVertical_bias="0.174" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Forgot Password?" />
+</LinearLayout>

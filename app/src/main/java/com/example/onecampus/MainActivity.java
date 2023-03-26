@@ -2,16 +2,22 @@ package com.example.onecampus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton signin,signup;
+    Button signin;
+    TextView signup;
+
     private static int SPLASH_TIME_OUT=0;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         signin=findViewById(R.id.signIn);
-        signup=findViewById(R.id.signup);
+        signup=findViewById(R.id.signUp);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
