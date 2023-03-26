@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_2"
     tools:context=".userRegister">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/averia_gruesa_libre"
         android:text="Register"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/userRegisterEmail"
         app:layout_constraintStart_toStartOf="@+id/userRegisterEmail" />
 
@@ -22,6 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="87dp"
         android:layout_marginTop="243dp"
+        android:hint="Email"
+        android:padding="10dp"
+        android:background="@drawable/back"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
+        android:background="@drawable/back"
         android:ems="10"
+        android:padding="10dp"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/userRegisterEmail"
         app:layout_constraintTop_toBottomOf="@+id/userRegisterEmail" />
@@ -41,9 +50,9 @@
         android:id="@+id/usersignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="82dp"
-        android:text="signup"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        android:text="Signup"
         app:layout_constraintStart_toStartOf="@+id/userRegisterPassword"
         app:layout_constraintTop_toBottomOf="@+id/userRegisterPassword" />
 
